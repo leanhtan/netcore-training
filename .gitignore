@@ -10,4 +10,7 @@ SimpleBlogEngine/SimpleBlogEngine.Repository/obj
 SimpleBlogEngine/SimpleBlogEngine.Service/bin
 SimpleBlogEngine/SimpleBlogEngine.Service/obj
 
+SimpleBlogEngine/SimpleBlogEngine.API/bin
+SimpleBlogEngine/SimpleBlogEngine.API/obj
+
 SimpleBlogEngine/.vs
