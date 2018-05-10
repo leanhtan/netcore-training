@@ -1,6 +1,6 @@
 job_build_dotnet:
        stage: build
-       image: microsoft/dotnet:2.1
+       image: microsoft/dotnet:latest
        script:
          - dotnet restore SimpleBlogEngine
          - dotnet publish SimpleBlogEngine/SimpleBlogEngine -c Release
