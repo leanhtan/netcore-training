@@ -1,11 +1,10 @@
-image : microsoft/dotnet:latest
-stages:
-  - build
-before_script:
-  - 'dotnet restore'
-build:
- stage: build
- script:
-  - 'dotnet build'
- only:
-   - master
+job_build_dotnet:
+       stage: build
+       image: microsoft/dotnet:latest
+       script:
+         - dotnet restore
+         - dotnet publish SimpleBlogEngine/SimpleBlogEngine -c Release
+       artifacts:
+         expire_in: 12 hrs
+         paths:
+          - SimpleBlogEngine/SimpleBlogEngine/bin/Release/netcoreapp1.1/publish/
