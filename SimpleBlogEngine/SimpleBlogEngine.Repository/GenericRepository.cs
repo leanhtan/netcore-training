@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SimpleBlogEngine.Repository.Interfaces;
 using SimpleBlogEngine.Repository.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
