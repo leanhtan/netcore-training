@@ -1,9 +1,8 @@
 job_build_dotnet:
        stage: build
-       image: microsoft/dotnet:latest
+       image: microsoft/dotnet:2.1.200
        script:
          - dotnet restore SimpleBlogEngine
-         - dotnet build SimpleBlogEngine/SimpleBlogEngine -c Release
          - dotnet publish SimpleBlogEngine/SimpleBlogEngine -c Release
        artifacts:
          expire_in: 12 hrs
