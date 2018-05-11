@@ -13,8 +13,7 @@ job_build_dotnet:
 deploy_development:
        stage: deploy
        script:
-       dependencies:
-        - build
+        - echo "Deploy to Development"
        environment:
          name: Development
          url: https://development.SimpleBlogEngine.com
