@@ -3,6 +3,7 @@ using SimpleBlogEngine.Repository.Models;
 using SimpleBlogEngine.Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SimpleBlogEngine.Service
 {

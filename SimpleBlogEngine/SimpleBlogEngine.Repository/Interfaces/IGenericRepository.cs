@@ -1,5 +1,6 @@
 ﻿using SimpleBlogEngine.Repository.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SimpleBlogEngine.Repository.Interfaces
 {

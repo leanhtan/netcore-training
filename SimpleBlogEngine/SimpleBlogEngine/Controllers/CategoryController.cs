@@ -9,11 +9,11 @@ using System.Linq;
 
 namespace SimpleBlogEngine.Controllers
 {
-    public class CategoriesController : Controller
+    public class CategoryController : Controller
     {
         ICategoryService categoryService;
 
-        public CategoriesController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService)
         {
             this.categoryService = categoryService;
         }

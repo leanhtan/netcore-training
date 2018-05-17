@@ -1,18 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SimpleBlogEngine.Repository.Models
+namespace SimpleBlogEngine.Models
 {
-    public class Post : BaseEntity
+    public class PostViewModel
     {
+        public long Id { get; set; }
         [Required]
         [MaxLength(50)]
         public string Title { get; set; }
-
         [Required]
         public string Content { get; set; }
-
-        public long CategoryId { get; set; }
-
-        public virtual Category Category { get; set; }
+        [Display(Name = "Category Name")]
+        public string CategoryName { get; set; }
     }
 }
