@@ -19,17 +19,14 @@ namespace SimpleBlogEngine.Pages.Post
             this.postService = postService;
         }
 
-        public void OnGet(long id)
+        public async Task OnGet(long id)
         {
-            post = postService.Get(id);
+            post = await postService.Get(id);
         }
 
-        public IActionResult OnPost(long id)
+        public async Task<IActionResult> OnPost(long id)
         {
-            if (post != null)
-            {
-                postService.Delete(post);
-            }
+            await postService.Delete(post.Id);
             return RedirectToPage("Index");
         }
     }

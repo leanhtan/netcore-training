@@ -2,7 +2,7 @@
 using SimpleBlogEngine.Repository.Interfaces;
 using SimpleBlogEngine.Repository.Models;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace SimpleBlogEngine.Repository
 {
@@ -17,32 +17,31 @@ namespace SimpleBlogEngine.Repository
             entities = context.Set<T>();
         }
 
-
-        public void Delete(T entity)
-        {            
+        public async Task Delete(T entity)
+        {
             entities.Remove(entity);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
 
-        public T Get(long id)
+        public async Task<T> Get(long id)
         {
-            return entities.SingleOrDefault(s => s.Id == id);
+            return await entities.SingleOrDefaultAsync(s => s.Id == id);
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<ICollection<T>> GetAll()
         {
-            return entities.AsEnumerable();
+            return await entities.ToListAsync();
         }
 
-        public void Insert(T entity)
+        public async Task Insert(T entity)
         {
-            entities.Add(entity);
-            context.SaveChanges();
+            await entities.AddAsync(entity);
+            await context.SaveChangesAsync();
         }
 
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
     }
 }

@@ -6,6 +6,7 @@ using SimpleBlogEngine.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SimpleBlogEngine.Controllers
 {
@@ -19,29 +20,30 @@ namespace SimpleBlogEngine.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             List<CategoryViewModel> categories = new List<CategoryViewModel>();
-            categoryService.GetAll().ToList().ForEach(a =>
-           {
-               CategoryViewModel category = new CategoryViewModel
-               {
-                   Id = a.Id,
-                   Name = a.Name,
-                   Description = a.Description
-               };
-               categories.Add(category);
-           });
+            var categoryCollection = await categoryService.GetAll();
+            categoryCollection.ToList().ForEach(a =>
+            {
+                CategoryViewModel category = new CategoryViewModel
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Description = a.Description
+                };
+                categories.Add(category);
+            });
             return View("Index", categories);
         }
 
         [HttpGet]
-        public PartialViewResult AddEditCategory(long? id)
+        public async Task<PartialViewResult> AddEditCategory(long? id)
         {
             CategoryViewModel model = new CategoryViewModel();
             if (id.HasValue)
             {
-                Category category = categoryService.Get(id.Value);
+                Category category = await categoryService.Get(id.Value);
                 if (category != null)
                 {
                     model.Id = category.Id;
@@ -53,7 +55,7 @@ namespace SimpleBlogEngine.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddEditCategory(long? id, CategoryViewModel model)
+        public async Task<IActionResult> AddEditCategory(long? id, CategoryViewModel model)
         {
             try
             {
@@ -63,7 +65,7 @@ namespace SimpleBlogEngine.Controllers
                     Category category = isNew ? new Category
                     {
                         AddedDate = DateTime.UtcNow
-                    }: categoryService.Get(id.Value);
+                    }: await categoryService.Get(id.Value);
 
                     category.Name = model.Name;
                     category.Description = model.Description;
@@ -71,11 +73,11 @@ namespace SimpleBlogEngine.Controllers
                     category.ModifiedDate = DateTime.UtcNow;
                     if (isNew)
                     {
-                        categoryService.Insert(category);
+                        await categoryService.Insert(category);
                     }
                     else
                     {
-                        categoryService.Update(category);
+                        await categoryService.Update(category);
                     }
                 }
             }
@@ -87,20 +89,16 @@ namespace SimpleBlogEngine.Controllers
         }
 
         [HttpGet]
-        public PartialViewResult DeleteCategory(long id)
+        public async Task<PartialViewResult> DeleteCategory(long id)
         {
-            Category category = categoryService.Get(id);
+            Category category = await categoryService.Get(id);
             return PartialView("_DeleteCategory", category?.Name);
         }
 
         [HttpPost]
-        public IActionResult DeleteCategory(long id, IFormCollection form)
+        public async Task<IActionResult> DeleteCategory(long id, IFormCollection form)
         {
-            Category category = categoryService.Get(id);
-            if (category != null)
-            {
-                categoryService.Delete(category);
-            }
+            await categoryService.Delete(id);
             return RedirectToAction("Index");
         }
     }

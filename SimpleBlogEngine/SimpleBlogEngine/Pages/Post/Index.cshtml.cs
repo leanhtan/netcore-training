@@ -22,9 +22,10 @@ namespace SimpleBlogEngine.Pages.Post
             this.categoryService = categoryService;
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
-            postService.GetAll().ToList().ForEach(a => 
+            var postCollection = await postService.GetAll();
+            postCollection.ToList().ForEach(async a => 
             {
                 PostViewModel post = new PostViewModel
                 {
@@ -32,7 +33,7 @@ namespace SimpleBlogEngine.Pages.Post
                     Title = a.Title,
                     Content = a.Content
                 };
-                Category category = categoryService.Get(a.CategoryId);
+                Category category = await categoryService.Get(a.CategoryId);
                 post.CategoryName = category.Name;
                 Posts.Add(post);
             });

@@ -1,15 +1,15 @@
 ﻿using SimpleBlogEngine.Repository.Models;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace SimpleBlogEngine.Repository.Interfaces
 {
     public interface IGenericRepository<T> where T : BaseEntity
     {
-        IEnumerable<T> GetAll();
-        T Get(long id);
-        void Insert(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        Task<ICollection<T>> GetAll();
+        Task<T> Get(long id);
+        Task Insert(T entity);
+        Task Update(T entity);
+        Task Delete(T entity);
     }
 }

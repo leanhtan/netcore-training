@@ -4,6 +4,7 @@ using SimpleBlogEngine.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SimpleBlogEngine.Service
 {
@@ -16,41 +17,42 @@ namespace SimpleBlogEngine.Service
             this.genericRepository = genericRepository;
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<ICollection<T>> GetAll()
         {
-            return genericRepository.GetAll();
+            return await genericRepository.GetAll();
         }
 
-        public T Get(long id)
+        public async Task<T> Get(long id)
         {
-            return genericRepository.Get(id);
+            return await genericRepository.Get(id);
         }
 
-        public void Insert(T entity)
+        public async Task Insert(T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            genericRepository.Insert(entity);
+            await genericRepository.Insert(entity);
         }
 
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            genericRepository.Update(entity);
+            await genericRepository.Update(entity);
         }
 
-        public void Delete(T entity)
+        public async Task Delete(long id)
         {
+            var entity = await genericRepository.Get(id);
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            genericRepository.Delete(entity);
+            await genericRepository.Delete(entity);
         }
     }
 }

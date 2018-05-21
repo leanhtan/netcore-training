@@ -7,5 +7,6 @@ namespace SimpleBlogEngine.Service.Interfaces
 {
     public interface ICategoryService : IBaseService<Category>
     {
+
     }
 }

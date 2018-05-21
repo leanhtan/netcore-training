@@ -23,16 +23,17 @@ namespace SimpleBlogEngine.Pages.Post
             this.categoryService = categoryService;
         }
 
-        public void OnGet(long? id)
+        public async Task OnGet(long? id)
         {
-            createEditPostViewModel.Categories = categoryService.GetAll().Select(a => new SelectListItem
+            var categoryCollection = await categoryService.GetAll();
+            createEditPostViewModel.Categories = categoryCollection.ToList().Select(a => new SelectListItem
             {
                 Text = a.Name,
                 Value = a.Id.ToString()
             }).ToList();
             if (id.HasValue)
             {
-                Repository.Models.Post post = postService.Get(id.Value);
+                Repository.Models.Post post = await postService.Get(id.Value);
                 if (post != null)
                 {
                     createEditPostViewModel.Id = post.Id;
@@ -43,7 +44,7 @@ namespace SimpleBlogEngine.Pages.Post
             }
         }
 
-        public IActionResult OnPost(long? id)
+        public async Task<IActionResult> OnPost(long? id)
         {
             try
             {
@@ -53,7 +54,7 @@ namespace SimpleBlogEngine.Pages.Post
                     Repository.Models.Post post = isNew ? new Repository.Models.Post
                     {
                         AddedDate = DateTime.UtcNow
-                    } : postService.Get(id.Value);
+                    } : await postService.Get(id.Value);
 
                     post.Title = createEditPostViewModel.Title;
                     post.Content = createEditPostViewModel.Content;
@@ -62,11 +63,11 @@ namespace SimpleBlogEngine.Pages.Post
                     post.ModifiedDate = DateTime.UtcNow;
                     if (isNew)
                     {
-                        postService.Insert(post);
+                        await postService.Insert(post);
                     }
                     else
                     {
-                        postService.Update(post);
+                        await postService.Update(post);
                     }
                 }
             }
