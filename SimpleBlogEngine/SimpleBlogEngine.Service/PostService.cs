@@ -1,11 +1,8 @@
 ﻿using SimpleBlogEngine.Repository.Interfaces;
 using SimpleBlogEngine.Repository.Models;
-using SimpleBlogEngine.Service.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using SimpleBlogEngine.Services.Interfaces;
 
-namespace SimpleBlogEngine.Service
+namespace SimpleBlogEngine.Services
 {
     public class PostService : BaseService<Post>, IPostService
     {

@@ -1,8 +1,8 @@
 ﻿using SimpleBlogEngine.Repository.Interfaces;
 using SimpleBlogEngine.Repository.Models;
-using SimpleBlogEngine.Service.Interfaces;
+using SimpleBlogEngine.Services.Interfaces;
 
-namespace SimpleBlogEngine.Service
+namespace SimpleBlogEngine.Services
 {
     public class CategoryService : BaseService<Category>, ICategoryService
     {

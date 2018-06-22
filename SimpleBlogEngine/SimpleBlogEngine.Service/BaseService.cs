@@ -1,12 +1,11 @@
 ﻿using SimpleBlogEngine.Repository.Interfaces;
 using SimpleBlogEngine.Repository.Models;
-using SimpleBlogEngine.Service.Interfaces;
+using SimpleBlogEngine.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace SimpleBlogEngine.Service
+namespace SimpleBlogEngine.Services
 {
     public class BaseService<T> : IBaseService<T> where T : BaseEntity
     {

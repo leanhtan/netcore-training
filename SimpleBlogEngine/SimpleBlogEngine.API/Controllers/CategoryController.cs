@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SimpleBlogEngine.Repository.Models;
-using SimpleBlogEngine.Service.Interfaces;
+using SimpleBlogEngine.Services.Interfaces;
 
 namespace SimpleBlogEngine.API.Controllers
 {

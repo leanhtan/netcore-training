@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SimpleBlogEngine.Service\SimpleBlogEngine.Service.csproj" />
+    <ProjectReference Include="..\SimpleBlogEngine.Service\SimpleBlogEngine.Services.csproj" />
   </ItemGroup>
 
 </Project>

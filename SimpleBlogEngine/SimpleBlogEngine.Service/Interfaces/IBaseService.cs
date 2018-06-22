@@ -1,9 +1,8 @@
 ﻿using SimpleBlogEngine.Repository.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace SimpleBlogEngine.Service.Interfaces
+namespace SimpleBlogEngine.Services.Interfaces
 {
     public interface IBaseService<T> where T : BaseEntity
     {

@@ -1,14 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using SimpleBlogEngine.Repository.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
 
 namespace SimpleBlogEngine.Repository
 {
-    public class ApplicaitonContext : DbContext
+    public class ApplicationContext : DbContext
     {
-        public ApplicaitonContext(DbContextOptions<ApplicaitonContext> options) : base(options)
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
 
         }
