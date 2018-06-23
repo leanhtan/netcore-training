@@ -1,5 +1,5 @@
-SimpleBlogEngine/SimpleBlogEngine/bin
-SimpleBlogEngine/SimpleBlogEngine/obj
+SimpleBlogEngine/SimpleBlogEngine.Web/bin
+SimpleBlogEngine/SimpleBlogEngine.Web/obj
 
 SimpleBlogEngine/SimpleBlogEngine.Model/bin
 SimpleBlogEngine/SimpleBlogEngine.Model/obj
@@ -14,3 +14,4 @@ SimpleBlogEngine/SimpleBlogEngine.API/bin
 SimpleBlogEngine/SimpleBlogEngine.API/obj
 
 SimpleBlogEngine/.vs
+SimpleBlogEngine/.vscode

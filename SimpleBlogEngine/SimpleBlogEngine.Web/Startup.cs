@@ -10,6 +10,7 @@ using SimpleBlogEngine.Services;
 using SimpleBlogEngine.Repository.Interfaces;
 using SimpleBlogEngine.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using SimpleBlogEngine.Repository.Models;
 
 namespace SimpleBlogEngine.Web
 {
@@ -26,8 +27,7 @@ namespace SimpleBlogEngine.Web
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddDbContext<ApplicationContext>(options => options.UseInMemoryDatabase("SimpleBlog"));
-            services.AddDbContext<ApplicationContext>(options =>
-            options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationContext>(options =>            options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"), x => x.MigrationsAssembly("SimpleBlogEngine.Repository")));
 
             services.AddScoped<DbContext, ApplicationContext>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

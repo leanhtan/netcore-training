@@ -1,4 +1,5 @@
 ﻿@using SimpleBlogEngine.Web.Views.Manage
+@using SimpleBlogEngine.Repository.Models
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SimpleBlogEngine.Service\SimpleBlogEngine.Services.csproj" />
+    <ProjectReference Include="..\SimpleBlogEngine.Repository\SimpleBlogEngine.Repository.csproj" />
   </ItemGroup>
 
 </Project>

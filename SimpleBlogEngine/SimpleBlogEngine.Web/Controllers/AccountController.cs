@@ -10,6 +10,7 @@ using SimpleBlogEngine.Services.Interfaces;
 using SimpleBlogEngine.Web.Models;
 using SimpleBlogEngine.Web.Models.AccountViewModels;
 using SimpleBlogEngine.Web.Services;
+using SimpleBlogEngine.Repository.Models;
 
 namespace SimpleBlogEngine.Web.Controllers
 {
