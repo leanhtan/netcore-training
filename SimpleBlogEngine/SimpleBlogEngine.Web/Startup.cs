@@ -1,16 +1,17 @@
-﻿using System;
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SimpleBlogEngine.Web.Models;
 using SimpleBlogEngine.Repository;
 using SimpleBlogEngine.Services;
 using SimpleBlogEngine.Repository.Interfaces;
 using SimpleBlogEngine.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using SimpleBlogEngine.Repository.Models;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.AspNetCore.SpaServices.Webpack;
 
 namespace SimpleBlogEngine.Web
 {
@@ -82,6 +83,12 @@ namespace SimpleBlogEngine.Web
                     microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
                     microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
                 });
+
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Simple Blog Engine API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,11 +99,27 @@ namespace SimpleBlogEngine.Web
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+
+                // Webpack initialization with hot-reload.
+                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
+                {
+                    HotModuleReplacement = true,
+                });
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Admin/Error");
             }
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Simple Blog Engine API V1");
+            });
 
             app.UseStaticFiles();
 
@@ -107,6 +130,10 @@ namespace SimpleBlogEngine.Web
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = "Home", action = "Index" });
             });
         }
     }

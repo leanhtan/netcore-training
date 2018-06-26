@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SimpleBlogEngine.Repository.Models;
 using SimpleBlogEngine.Services.Interfaces;
-using SimpleBlogEngine.Web.Models;
+using SimpleBlogEngine.Web.Models.PostViewModels;
 
 namespace SimpleBlogEngine.Web.Pages.Post
 {
@@ -27,13 +26,13 @@ namespace SimpleBlogEngine.Web.Pages.Post
         public async Task OnGet()
         {
             var postCollection = await postService.GetAll();
-            postCollection.ToList().ForEach(async a => 
+            postCollection.ToList().ForEach(async a =>
             {
                 PostViewModel post = new PostViewModel
                 {
                     Id = a.Id,
                     Title = a.Title,
-                    Content = a.Content
+                    Content = string.Format("{0}...", a.Content.Length > 200 ? a.Content.Substring(0, 200) : a.Content)
                 };
                 Category category = await categoryService.Get(a.CategoryId);
                 post.CategoryName = category.Name;

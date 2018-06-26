@@ -1,5 +1,4 @@
 ﻿@model CategoryViewModel
-@using SimpleBlogEngine.Web.Models
 
 <form asp-action="AddEditCategory" role="form">
     @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = String.Format("{0} Category", @Model.Id == 0 ? "Add" : "Edit") })

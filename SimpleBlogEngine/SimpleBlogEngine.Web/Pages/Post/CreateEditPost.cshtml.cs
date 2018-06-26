@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SimpleBlogEngine.Services.Interfaces;
-using SimpleBlogEngine.Web.Models;
+using SimpleBlogEngine.Web.Models.PostViewModels;
 
 namespace SimpleBlogEngine.Web.Pages.Post
 {
@@ -34,7 +34,7 @@ namespace SimpleBlogEngine.Web.Pages.Post
             }).ToList();
             if (id.HasValue)
             {
-                Repository.Models.Post post = await postService.Get(id.Value);
+                var post = await postService.Get(id.Value);
                 if (post != null)
                 {
                     createEditPostViewModel.Id = post.Id;

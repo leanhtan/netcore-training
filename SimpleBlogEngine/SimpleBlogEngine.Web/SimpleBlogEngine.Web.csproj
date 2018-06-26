@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="2.5.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +21,12 @@
   <ItemGroup>
     <ProjectReference Include="..\SimpleBlogEngine.Service\SimpleBlogEngine.Services.csproj" />
     <ProjectReference Include="..\SimpleBlogEngine.Repository\SimpleBlogEngine.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SimpleBlogEngine.sqlite">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

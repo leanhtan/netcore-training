@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SimpleBlogEngine.Web.Models;
 using SimpleBlogEngine.Repository.Models;
 using SimpleBlogEngine.Services.Interfaces;
 using System;
@@ -8,10 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using SimpleBlogEngine.Web.Models.CategoryViewModels;
 
 namespace SimpleBlogEngine.Web.Controllers
 {
     [Authorize]
+    [Route("[controller]/[action]")]    
     public class CategoryController : Controller
     {
         ICategoryService categoryService;
@@ -22,6 +23,7 @@ namespace SimpleBlogEngine.Web.Controllers
         }
 
         [HttpGet]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> Index()
         {
             List<CategoryViewModel> categories = new List<CategoryViewModel>();
@@ -40,6 +42,7 @@ namespace SimpleBlogEngine.Web.Controllers
         }
 
         [HttpGet]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<PartialViewResult> AddEditCategory(long? id)
         {
             CategoryViewModel model = new CategoryViewModel();
@@ -57,6 +60,7 @@ namespace SimpleBlogEngine.Web.Controllers
         }
 
         [HttpPost]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> AddEditCategory(long? id, CategoryViewModel model)
         {
             try
@@ -67,7 +71,7 @@ namespace SimpleBlogEngine.Web.Controllers
                     Category category = isNew ? new Category
                     {
                         AddedDate = DateTime.UtcNow
-                    }: await categoryService.Get(id.Value);
+                    } : await categoryService.Get(id.Value);
 
                     category.Name = model.Name;
                     category.Description = model.Description;
@@ -83,7 +87,7 @@ namespace SimpleBlogEngine.Web.Controllers
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -91,6 +95,7 @@ namespace SimpleBlogEngine.Web.Controllers
         }
 
         [HttpGet]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<PartialViewResult> DeleteCategory(long id)
         {
             Category category = await categoryService.Get(id);
@@ -98,10 +103,30 @@ namespace SimpleBlogEngine.Web.Controllers
         }
 
         [HttpPost]
+        [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> DeleteCategory(long id, IFormCollection form)
         {
             await categoryService.Delete(id);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<List<CategoryViewModel>> GetAll()
+        {
+            List<CategoryViewModel> categories = new List<CategoryViewModel>();
+            var categoryCollection = await categoryService.GetAll();
+            categoryCollection.ToList().ForEach(a =>
+            {
+                CategoryViewModel category = new CategoryViewModel
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Description = a.Description
+                };
+                categories.Add(category);
+            });
+            return categories;
         }
     }
 }

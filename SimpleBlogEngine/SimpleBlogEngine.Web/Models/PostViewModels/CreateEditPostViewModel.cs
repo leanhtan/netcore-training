@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SimpleBlogEngine.Web.Models
+namespace SimpleBlogEngine.Web.Models.PostViewModels
 {
     public class CreateEditPostViewModel
     {

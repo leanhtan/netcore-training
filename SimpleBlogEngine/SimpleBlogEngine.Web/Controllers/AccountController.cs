@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SimpleBlogEngine.Services.Interfaces;
-using SimpleBlogEngine.Web.Models;
 using SimpleBlogEngine.Web.Models.AccountViewModels;
 using SimpleBlogEngine.Web.Services;
 using SimpleBlogEngine.Repository.Models;
@@ -15,7 +14,6 @@ using SimpleBlogEngine.Repository.Models;
 namespace SimpleBlogEngine.Web.Controllers
 {
     [Authorize]
-    [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -245,7 +243,7 @@ namespace SimpleBlogEngine.Web.Controllers
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
+            return RedirectToAction(nameof(AdminController.Index), "Admin");
         }
 
         [HttpPost]
@@ -333,7 +331,7 @@ namespace SimpleBlogEngine.Web.Controllers
         {
             if (userId == null || code == null)
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction(nameof(AdminController.Index), "Home");
             }
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
@@ -453,7 +451,7 @@ namespace SimpleBlogEngine.Web.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction(nameof(AdminController.Index), "Home");
             }
         }
 
