@@ -1,11 +1,11 @@
-﻿@page
+@page
 @model SimpleBlogEngine.Web.Pages.Post.CreateEditPostModel
 @{
     ViewData["Title"] = "CreateEditPost";
 }
 
 <form method="post" role="form">
-    @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = String.Format("{0} Post", @Model.createEditPostViewModel.Id == 0 ? "Add" : "Edit") })
+    @await Html.PartialAsync("../Shared/_ModalHeader", new ModalHeader { Heading = String.Format("{0} Post", @Model.createEditPostViewModel.Id == 0 ? "Add" : "Edit") })
     <div class="modal-body form-horizontal">
         <div class="form-group">
             <label asp-for="createEditPostViewModel.Title" class="col-lg-3 col-sm-3 control-label"></label>
@@ -17,7 +17,7 @@
         <div class="form-group">
             <label asp-for="createEditPostViewModel.Content" class="col-lg-3 col-sm-3 control-label"></label>
             <div class="col-lg-6">
-                <input asp-for="createEditPostViewModel.Content" class="form-control" />
+                <textarea rows="10" asp-for="createEditPostViewModel.Content" class="form-control"></textarea>
                 <span asp-validation-for="createEditPostViewModel.Content" class="text-danger"></span>
             </div>
         </div>
@@ -31,10 +31,10 @@
             </div>
         </div>
     </div>
-    @await Html.PartialAsync("_ModalFooter", new ModalFooter { })
+    @await Html.PartialAsync("../Shared/_ModalFooter", new ModalFooter { })
 </form>
 
 @section scripts
     {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("../Shared/_ValidationScriptsPartial");}
 }
