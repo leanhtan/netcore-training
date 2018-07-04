@@ -1,6 +1,9 @@
 ﻿using SimpleBlogEngine.Repository.Interfaces;
 using SimpleBlogEngine.Repository.Models;
 using SimpleBlogEngine.Services.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace SimpleBlogEngine.Services
 {
@@ -11,6 +14,12 @@ namespace SimpleBlogEngine.Services
         public PostService(IGenericRepository<Post> postRepository) : base(postRepository)
         {
             this.postRepository = postRepository;
+        }
+
+        public async Task<IEnumerable<Post>> GetTop()
+        {
+            var posts = await postRepository.GetAll();
+            return posts.OrderByDescending(x => x.AddedDate).Take(10);
         }
     }
 }

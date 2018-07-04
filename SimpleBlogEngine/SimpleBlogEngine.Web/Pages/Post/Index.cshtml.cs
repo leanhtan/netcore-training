@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -32,7 +32,7 @@ namespace SimpleBlogEngine.Web.Pages.Post
                 {
                     Id = a.Id,
                     Title = a.Title,
-                    Content = string.Format("{0}...", a.Content.Length > 200 ? a.Content.Substring(0, 200) : a.Content)
+                    Content = string.Format("{0}...", a.Content.Length > 50 ? a.Content.Substring(0, 50) : a.Content)
                 };
                 Category category = await categoryService.Get(a.CategoryId);
                 post.CategoryName = category.Name;

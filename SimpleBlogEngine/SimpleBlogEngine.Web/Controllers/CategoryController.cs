@@ -12,7 +12,7 @@ using SimpleBlogEngine.Web.Models.CategoryViewModels;
 namespace SimpleBlogEngine.Web.Controllers
 {
     [Authorize]
-    [Route("[controller]/[action]")]    
+    [Route("[controller]/[action]")]
     public class CategoryController : Controller
     {
         ICategoryService categoryService;
@@ -41,7 +41,7 @@ namespace SimpleBlogEngine.Web.Controllers
             return View("Index", categories);
         }
 
-        [HttpGet]
+        [HttpGet("{id?}")]
         [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<PartialViewResult> AddEditCategory(long? id)
         {
@@ -59,7 +59,7 @@ namespace SimpleBlogEngine.Web.Controllers
             return PartialView("_AddEditCategory", model);
         }
 
-        [HttpPost]
+        [HttpPost("{id?}")]
         [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> AddEditCategory(long? id, CategoryViewModel model)
         {
@@ -94,7 +94,7 @@ namespace SimpleBlogEngine.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<PartialViewResult> DeleteCategory(long id)
         {
@@ -102,7 +102,7 @@ namespace SimpleBlogEngine.Web.Controllers
             return PartialView("_DeleteCategory", category?.Name);
         }
 
-        [HttpPost]
+        [HttpPost("{id}")]
         [ApiExplorerSettings(IgnoreApi = true)]
         public async Task<IActionResult> DeleteCategory(long id, IFormCollection form)
         {
