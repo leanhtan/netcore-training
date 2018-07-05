@@ -70,5 +70,25 @@ namespace SimpleBlogEngine.Web.Controllers
             });
             return posts;
         }
+
+        [HttpGet("{id}")]
+        public async Task<List<PostViewModel>> GetByCategory(long id)
+        {
+            List<PostViewModel> posts = new List<PostViewModel>();
+            var postCollection = await postService.GetByCategory(id);
+            postCollection.ToList().ForEach(async a =>
+            {
+                PostViewModel post = new PostViewModel
+                {
+                    Id = a.Id,
+                    Title = a.Title,
+                    Content = string.Format("{0}...", a.Content.Length > 100 ? a.Content.Substring(0, 100) : a.Content)
+                };
+                Category category = await categoryService.Get(a.CategoryId);
+                post.CategoryName = category.Name;
+                posts.Add(post);
+            });
+            return posts;
+        }
     }
 }

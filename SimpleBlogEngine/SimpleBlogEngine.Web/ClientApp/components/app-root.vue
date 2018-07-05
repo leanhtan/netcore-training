@@ -5,22 +5,10 @@
                 <nav-menu></nav-menu>
             </div>
             <div class="col-sm-9">
-                <router-view></router-view>
+              <router-view :key="$route.fullPath"></router-view>
             </div>
         </div>
     </div>
 </template>
 
-<script>
-    import NavMenu from './nav-menu'
-
-    export default {
-      components: {
-        'nav-menu': NavMenu
-      },
-
-      data () {
-        return {}
-      }
-    }
-</script>
+<script src="./app-root.vue.js"/>

@@ -21,5 +21,11 @@ namespace SimpleBlogEngine.Services
             var posts = await postRepository.GetAll();
             return posts.OrderByDescending(x => x.AddedDate).Take(10);
         }
+
+        public async Task<IEnumerable<Post>> GetByCategory(long id)
+        {
+            var posts = await postRepository.GetAll();
+            return posts.Where(x => x.CategoryId == id);
+        }
     }
 }

@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import axios from 'axios'
-import router from './router/index'
-import store from './store'
-import { sync } from 'vuex-router-sync'
-import App from 'components/app-root'
-import { FontAwesomeIcon } from './icons'
 import BootstrapVue from 'bootstrap-vue'
+import { sync } from 'vuex-router-sync'
+import { FontAwesomeIcon } from './icons'
+import store from './store'
+import router from './router/index'
+import App from 'components/app-root'
 
 // Registration of global components
 Vue.component('icon', FontAwesomeIcon)

@@ -39,36 +39,43 @@
     .main-nav {
         height: 100%;
         width: calc(25% - 20px);
-    }    
-    .main-nav .navbar {
-        border-radius: 0px;
-        border-width: 0px;
-        height: 100%;
     }
+
+        .main-nav .navbar {
+            border-radius: 0px;
+            border-width: 0px;
+            height: 100%;
+        }
+
     .navbar-expand-md .navbar-nav {
         flex-direction: column;
     }
+
     .navbar-header {
         float: none;
     }
+
     .navbar-collapse {
         border-top: 1px solid #444;
         padding: 0px;
     }
-    .navbar-collapse ul {
-        float: none;
-    }
+
+        .navbar-collapse ul {
+            float: none;
+        }
+
     .nav-item {
         float: none;
         font-size: 15px;
         margin: 6px;
     }
-    .nav-item a {
-        padding: 10px 16px;
-        border-radius: 4px;
-        color: white;
-    }
-    
+
+        .nav-item a {
+            padding: 10px 16px;
+            border-radius: 4px;
+            color: white;
+        }
+
     .navbar a {
         /* If a menu item's text is too long, truncate it */
         width: 95%; /* Bug to fix here. Width 100% overflow. */
@@ -77,3 +84,23 @@
         text-overflow: ellipsis;
     }
 }
+
+/*CSS for search bar*/
+    #searchBar {
+        outline: 0;
+        height: 42px;
+        width: 100%;
+        line-height: 42px;
+        padding: 0 16px;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #212121;
+        border: 0;
+        float: left;
+        -webkit-border-radius: 4px 0 0 4px;
+        border-radius: 4px 4px 4px 4px;
+    }
+
+    #searchBar:focus {
+        outline: 0;
+        background-color: #FFF;
+    }
