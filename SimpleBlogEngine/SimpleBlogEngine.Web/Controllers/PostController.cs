@@ -43,7 +43,7 @@ namespace SimpleBlogEngine.Web.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(long id)
         {
-            var post = await postService.Get(id);    
+            var post = await postService.Get(id);
             return Ok(new PostViewModel
             {
                 Title = post.Title,
@@ -72,23 +72,27 @@ namespace SimpleBlogEngine.Web.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<List<PostViewModel>> GetByCategory(long id)
+        public async Task<LazyPostViewModel> GetByCategory(long id, int getIndex, int amount)
         {
             List<PostViewModel> posts = new List<PostViewModel>();
             var postCollection = await postService.GetByCategory(id);
-            postCollection.ToList().ForEach(async a =>
+            var lazyPosts = new LazyPostViewModel
             {
-                PostViewModel post = new PostViewModel
-                {
-                    Id = a.Id,
-                    Title = a.Title,
-                    Content = string.Format("{0}...", a.Content.Length > 100 ? a.Content.Substring(0, 100) : a.Content)
-                };
-                Category category = await categoryService.Get(a.CategoryId);
-                post.CategoryName = category.Name;
-                posts.Add(post);
-            });
-            return posts;
+                Total = postCollection.Count()
+            };
+            postCollection.Skip(getIndex - 1).Take(amount).ToList().ForEach(async a =>
+              {
+                  PostViewModel post = new PostViewModel
+                  {
+                      Id = a.Id,
+                      Title = a.Title,
+                      Content = string.Format("{0}...", a.Content.Length > 100 ? a.Content.Substring(0, 100) : a.Content)
+                  };
+                  Category category = await categoryService.Get(a.CategoryId);
+                  post.CategoryName = category.Name;
+                  lazyPosts.Posts.Add(post);
+              });
+            return lazyPosts;
         }
 
         [HttpGet()]

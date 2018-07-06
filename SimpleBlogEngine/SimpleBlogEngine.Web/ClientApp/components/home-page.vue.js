@@ -5,8 +5,10 @@ export default {
   data() {
     return {
       posts: [],
-      newPosts: [],
-
+      bottom: false,
+      totalPost: 0,
+      getIndexPost: 1,
+      amount: 6,
     }
   },
   mounted() {
@@ -32,12 +34,15 @@ export default {
       }
       else {
         axios
-          .get('./Post/GetByCategory/'.concat(this.currentCategoryId))
-          .then(response => (
-            response.data.forEach(function (item) {
+          .get('./Post/GetByCategory/'.concat(this.currentCategoryId)
+            .concat("?getIndex=").concat(this.getIndexPost).concat("&amount=").concat(this.amount))
+          .then(response => {
+            this.totalPost = response.data.total;
+            this.getIndexPost = this.getIndexPost + this.amount;
+            response.data.posts.forEach(function (item) {
               vm.posts.push({ path: "/Post", title: item.title, content: item.content, id: item.id });
             })
-          ));
+          });
       }
     }
   },
@@ -55,12 +60,32 @@ export default {
       this.setPostId({
         postId: postId,
       })
+    },
+    bottomVisible() {
+      const scrollY = window.scrollY
+      const visible = document.documentElement.clientHeight
+      const pageHeight = document.documentElement.scrollHeight
+      const bottomOfPage = visible + scrollY >= pageHeight
+      return bottomOfPage || pageHeight < visible
+    },
+    addBeer() {
+      let vm = this;
+      axios
+        .get('./Post/GetByCategory/'.concat(this.currentCategoryId)
+          .concat("?getIndex=").concat(this.getIndexPost).concat("&amount=").concat(this.amount))
+        .then(response => {
+          this.totalPost = response.data.total;
+          this.getIndexPost = this.getIndexPost + this.amount;
+          response.data.posts.forEach(function (item) {
+            vm.posts.push({ path: "/Post", title: item.title, content: item.content, id: item.id });
+          })
+        });
     }
   },
   watch: {
     currentSearchContent(newValue) {
       let vm = this;
-      this.posts= [];
+      this.posts = [];
       axios
         .get('./Post/Search?searchContent='.concat(newValue))
         .then(response => (
@@ -68,6 +93,16 @@ export default {
             vm.posts.push({ path: "/Post", title: item.title, content: item.content, id: item.id });
           })
         ));
+    },
+    bottom(bottom) {
+      this.addBeer();
     }
+  },
+  created() {
+    window.addEventListener('scroll', () => {
+      if (this.currentCategoryId != undefined && this.getIndexPost <= this.totalPost) {
+        this.bottom = this.bottomVisible()
+      }
+    });
   }
 }
