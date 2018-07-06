@@ -33,7 +33,18 @@ export default {
     searchPost: function () {
       this.setSearchContent({
         searchContent: this.searchContent
-      })
+      });
+      this.setCategory({
+        categoryId: undefined,
+        categoryName: "Search with key: '".concat(this.searchContent).concat("'")
+      });
+      this.$router.replace("Search");
+    },
+    clearSearchContent: function () {
+      this.searchContent = '';
+      this.setSearchContent({
+        searchContent: this.searchContent
+      });
     }
   }
 }

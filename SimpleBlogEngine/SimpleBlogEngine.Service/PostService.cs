@@ -27,5 +27,11 @@ namespace SimpleBlogEngine.Services
             var posts = await postRepository.GetAll();
             return posts.Where(x => x.CategoryId == id);
         }
+
+        public async Task<IEnumerable<Post>> Search(string searchContent)
+        {
+            var posts = await postRepository.GetAll();
+            return posts.Where(x => string.IsNullOrEmpty(searchContent) || x.Title.ToLower().Contains(searchContent.ToLower()) || x.Content.ToLower().Contains(searchContent.ToLower()));
+        }
     }
 }

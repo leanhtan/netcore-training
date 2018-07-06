@@ -3,7 +3,7 @@
     <h1>{{currentCategoryName}}</h1>
     <b-row style="margin-top: 25px;">
       <b-card-group columns="">
-        <div v-for="(post, index) in posts">
+        <div v-for="(post, index) in posts" :key="post.id">
           <b-card :title="post.title"
             img-src="https://picsum.photos/600/300/?image=25"
             img-alt="Image"

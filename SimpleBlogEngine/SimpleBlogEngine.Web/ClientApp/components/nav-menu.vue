@@ -8,13 +8,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <div @click="changeCategory(undefined, 'News')">
+            <div @click="changeCategory(undefined, 'News'), clearSearchContent()">
               <router-link class="navbar-brand" to="/"><icon :icon="['fab', 'blogger-b']"/> Simple Blog Engine</router-link>
             </div>  
             <transition name="slide">
                 <div :class="'collapse navbar-collapse' + (!collapsed ? ' show':'')" v-show="!collapsed">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item" v-for="(route, index) in routes" :key="index"  @click="changeCategory(route.id, route.display)">
+                        <li class="nav-item" v-for="(route, index) in routes" :key="index"  @click="changeCategory(route.id, route.display), clearSearchContent()">
                             <router-link :to="route.path" exact-active-class="active">
                                 <icon :icon="route.icon" class="mr-2" /><span>{{ route.display }}</span> 
                             </router-link>

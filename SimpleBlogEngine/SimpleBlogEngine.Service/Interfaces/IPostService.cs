@@ -9,5 +9,7 @@ namespace SimpleBlogEngine.Services.Interfaces
         Task<IEnumerable<Post>> GetTop();
 
         Task<IEnumerable<Post>> GetByCategory(long id);
+
+        Task<IEnumerable<Post>> Search(string searchContent);
     }
 }
