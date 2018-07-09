@@ -2,9 +2,9 @@
 @model SimpleBlogEngine.Web.Pages.Post.DeletePostModel
 
 <form method="post" role="form">
-    @Html.Partial("../Shared/_ModalHeader", new ModalHeader { Heading = "Delete Post" })
+    @Html.Partial("_ModalHeader", new ModalHeader { Heading = "Delete Post" })
     <div class="modal-body form-horizontal">
         Are you want to delete @Model.post.Title?
     </div>
-    @Html.Partial("../Shared/_ModalFooter", new ModalFooter { SubmitButtonText = "Delete" })
+    @Html.Partial("_RazorModalFooter", new ModalFooter { SubmitButtonText = "Delete" })
 </form>

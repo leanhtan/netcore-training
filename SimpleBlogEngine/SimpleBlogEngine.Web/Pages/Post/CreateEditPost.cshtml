@@ -5,7 +5,7 @@
 }
 
 <form method="post" role="form">
-    @await Html.PartialAsync("../Shared/_ModalHeader", new ModalHeader { Heading = String.Format("{0} Post", @Model.createEditPostViewModel.Id == 0 ? "Add" : "Edit") })
+    @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = String.Format("{0} Post", @Model.createEditPostViewModel.Id == 0 ? "Add" : "Edit") })
     <div class="modal-body form-horizontal">
         <div class="form-group">
             <label asp-for="createEditPostViewModel.Title" class="col-lg-3 col-sm-3 control-label"></label>
@@ -31,10 +31,10 @@
             </div>
         </div>
     </div>
-    @await Html.PartialAsync("../Shared/_ModalFooter", new ModalFooter { })
+    @await Html.PartialAsync("_RazorModalFooter", new ModalFooter { })
 </form>
 
 @section scripts
     {
-    @{ await Html.RenderPartialAsync("../Shared/_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

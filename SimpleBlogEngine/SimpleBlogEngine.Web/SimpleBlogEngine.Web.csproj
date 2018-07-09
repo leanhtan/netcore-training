@@ -22,7 +22,7 @@
     <ProjectReference Include="..\SimpleBlogEngine.Service\SimpleBlogEngine.Services.csproj" />
     <ProjectReference Include="..\SimpleBlogEngine.Repository\SimpleBlogEngine.Repository.csproj" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <None Update="SimpleBlogEngine.sqlite">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
