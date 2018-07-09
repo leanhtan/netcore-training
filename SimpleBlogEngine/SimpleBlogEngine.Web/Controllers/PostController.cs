@@ -74,7 +74,6 @@ namespace SimpleBlogEngine.Web.Controllers
         [HttpGet("{id}")]
         public async Task<LazyPostViewModel> GetByCategory(long id, int getIndex, int amount)
         {
-            List<PostViewModel> posts = new List<PostViewModel>();
             var postCollection = await postService.GetByCategory(id);
             var lazyPosts = new LazyPostViewModel
             {
@@ -96,11 +95,14 @@ namespace SimpleBlogEngine.Web.Controllers
         }
 
         [HttpGet()]
-        public async Task<List<PostViewModel>> Search(string searchContent)
+        public async Task<LazyPostViewModel> Search(string searchContent, int getIndex, int amount)
         {
-            List<PostViewModel> posts = new List<PostViewModel>();
             var postCollection = await postService.Search(searchContent);
-            postCollection.ToList().ForEach(async a =>
+            var lazyPosts = new LazyPostViewModel
+            {
+                Total = postCollection.Count()
+            };
+            postCollection.Skip(getIndex - 1).Take(amount).ToList().ForEach(async a =>
             {
                 PostViewModel post = new PostViewModel
                 {
@@ -110,9 +112,9 @@ namespace SimpleBlogEngine.Web.Controllers
                 };
                 Category category = await categoryService.Get(a.CategoryId);
                 post.CategoryName = category.Name;
-                posts.Add(post);
+                lazyPosts.Posts.Add(post);
             });
-            return posts;
+            return lazyPosts;
         }
     }
 }

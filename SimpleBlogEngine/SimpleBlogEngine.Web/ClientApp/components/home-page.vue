@@ -14,7 +14,7 @@
             <p class="card-text">
               {{post.content}}
             </p>
-            <b-button :to="post.path" variant="primary" @click="changePostId(post.id)">Details</b-button>
+            <b-button :to="post.path" variant="primary" @click="changePostId(post.id)">Chi tiết</b-button>
           </b-card>
         </div>
       </b-card-group>
