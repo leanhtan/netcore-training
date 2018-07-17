@@ -14,11 +14,11 @@ export default {
     let vm = this;
     if (this.currentPostId != undefined) {
       axios
-        .get('./Post/Get/'.concat(this.currentPostId))
+        .get('/Post/Get/'.concat(this.currentPostId))
         .then(response => (
           vm.post.title = response.data.title,
           vm.post.content = response.data.content
-          )
+        )
         );
     }
   },
