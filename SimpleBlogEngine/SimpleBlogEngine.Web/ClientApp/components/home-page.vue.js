@@ -82,7 +82,7 @@ export default {
           })
         });
     },
-    ChangeToSlug(title) {
+    ChangeToSlug(title, postId) {
       var slug;
 
       //Đổi chữ hoa thành chữ thường
@@ -109,7 +109,7 @@ export default {
       //Xóa các ký tự gạch ngang ở đầu và cuối
       slug = '@' + slug + '@';
       slug = slug.replace(/\@\-|\-\@|\@/gi, '');
-      return slug;
+      return slug.concat("_").concat(postId);
     }
   },
   watch: {

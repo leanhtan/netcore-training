@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   data() {
@@ -11,8 +11,19 @@ export default {
     }
   },
   mounted() {
-    let vm = this;
-    if (this.currentPostId != undefined) {
+    if (this.currentPostId == undefined) {
+      this.changePostId(this.$router.currentRoute.path.split("_")[1]);
+    }
+    this.getPost();
+  }, methods: {
+    ...mapActions(['setPostId']),
+    changePostId: function (postId) {
+      this.setPostId({
+        postId: postId,
+      })
+    },
+    getPost() {
+      let vm = this;
       axios
         .get('/Post/Get/'.concat(this.currentPostId))
         .then(response => (

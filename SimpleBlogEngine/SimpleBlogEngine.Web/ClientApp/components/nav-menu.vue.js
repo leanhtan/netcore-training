@@ -12,7 +12,7 @@ export default {
   mounted() {
     let vm = this;
     axios
-      .get('./Category/GetAll')
+      .get('/Category/GetAll')
       .then(response => (
         response.data.forEach(function (item) {
           vm.routes.push({ path: '/'.concat(item.name), display: item.name, icon: 'align-justify', id: item.id });
