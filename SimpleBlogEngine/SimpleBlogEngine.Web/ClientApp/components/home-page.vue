@@ -1,7 +1,7 @@
 <template>
-  <b-container>
+  <div>
     <h1>{{currentCategoryName}}</h1>
-    <b-row style="margin-top: 25px;">
+    <div style="margin-top: 25px;">
       <b-card-group columns="">
         <div v-for="(post, index) in posts" :key="post.id">
           <b-card :title="post.title"
@@ -18,8 +18,8 @@
           </b-card>
         </div>
       </b-card-group>
-    </b-row>
-  </b-container>
+    </div>
+  </div>
 </template>
 
 <script src="./home-page.vue.js" />

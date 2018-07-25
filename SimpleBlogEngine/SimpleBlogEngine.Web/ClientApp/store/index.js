@@ -13,7 +13,7 @@ const state = {
   categoryId: undefined,
   categoryName: 'News',
   postId: undefined,
-  searchContent: undefined,
+  searchContent: "",
 }
 
 // MUTATIONS

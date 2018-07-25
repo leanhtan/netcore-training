@@ -4,7 +4,7 @@ import { mapActions } from 'vuex'
 export default {
   data() {
     return {
-      routes: [{ path: '/', display: 'News', icon: 'table' }],
+      routes: [],
       collapsed: true,
       searchContent: ''
     }
@@ -15,7 +15,7 @@ export default {
       .get('/Category/GetAll')
       .then(response => (
         response.data.forEach(function (item) {
-          vm.routes.push({ path: '/'.concat(item.name), display: item.name, icon: 'align-justify', id: item.id });
+          vm.routes.push({ path: '/'.concat(item.name), display: item.name, id: item.id });
         })
       ));
   },
