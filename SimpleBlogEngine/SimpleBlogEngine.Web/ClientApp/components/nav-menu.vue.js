@@ -38,7 +38,7 @@ export default {
         categoryId: undefined,
         categoryName: "Search with key: '".concat(this.searchContent).concat("'")
       });
-      this.$router.replace("Search");
+      this.$router.replace("/Search");
     },
     clearSearchContent: function () {
       this.searchContent = '';

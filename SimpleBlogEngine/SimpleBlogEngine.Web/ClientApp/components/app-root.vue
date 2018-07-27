@@ -5,42 +5,33 @@
           <nav-menu></nav-menu>
         </b-col>
       </b-row>
-        <b-row>
-            <b-col style="margin-top: 70px;">
-              <div>
-                <b-carousel id="carousel1"
-                            style="text-shadow: 1px 1px 2px #333;"
-                            controls=""
-                            indicators=""
-                            background="#ababab"
-                            :interval="4000"
-                            img-width="1024"
-                            img-height="300">
-
-                  <!-- Text slides with image -->
-                  <b-carousel-slide caption="Northrop Frye"
-                                    text="The most technologically efficient machine that man has ever invented is the book."
-                                    img-src="https://picsum.photos/1024/300/?image=2">
-                  </b-carousel-slide>
-                  <b-carousel-slide caption="Thomas Edison"
-                                    text="It has become appallingly obvious that our technology has exceeded our humanity."
-                                    img-src="https://picsum.photos/1024/300/?image=26">
-                  </b-carousel-slide>
-                  <b-carousel-slide caption="Albert Einstein"
-                                    text="Nulla vitae elit libero, a pharetra augue mollis interdum.It has become appallingly obvious that our technology has exceeded our humanity."
-                                    img-src="https://picsum.photos/1024/300/?image=20">
-                  </b-carousel-slide>
-                  <b-carousel-slide caption="Elbert Hubbard"
-                                    text="One machine can do the work of fifty ordinary men. No machine can do the work of one extraordinary man."
-                                    img-src="https://picsum.photos/1024/300/?image=39">
-                  </b-carousel-slide>
-
-                  <!-- Slides with custom text -->
-                </b-carousel>
-              </div>
-              <router-view :key="$route.fullPath"></router-view>
-            </b-col>
-        </b-row>
+      <b-row>
+          <b-col style="margin-top: 70px;">
+            <carousel></carousel>
+            <router-view :key="$route.fullPath"></router-view>
+          </b-col>
+      </b-row>
+      <hr/>
+      <footer>
+        <div class="bg-light text-dark p-2">
+          <div class="float-right">
+            <a href="https://www.linkedin.com/in/tan-le-anh/" class="text-dark">
+              <icon :icon="['fab', 'linkedin']"/>
+            </a>
+            <a href="https://www.facebook.com/leanhtan911205" class="text-dark">
+              <icon :icon="['fab', 'facebook-square']"/>
+            </a>
+          </div>
+          <p>
+            A website created base on .NET Core and Vue.js
+            </br>
+            Design by Tan Le Anh - Senior Software Engineer - NashTech
+          </p>
+          <i>
+            &copy; 2018 Simple Blog Engine
+          </i>
+        </div>
+      </footer>
     </b-container>
 </template>
 

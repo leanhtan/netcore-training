@@ -7,7 +7,8 @@ export default {
       post: {
         title: '',
         content: ''
-      }
+      },
+      text: ''
     }
   },
   mounted() {
