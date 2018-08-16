@@ -15,11 +15,11 @@
       <footer>
         <div class="bg-light text-dark p-2">
           <div class="float-right">
-            <a href="https://www.linkedin.com/in/tan-le-anh/" class="text-dark">
-              <icon :icon="['fab', 'linkedin']"/>
+            <a href="https://www.linkedin.com/in/tan-le-anh/" class="text-dark" target="_blank">
+              <icon :icon="['fab', 'linkedin']" size="lg"/>
             </a>
-            <a href="https://www.facebook.com/leanhtan911205" class="text-dark">
-              <icon :icon="['fab', 'facebook-square']"/>
+            <a href="https://www.facebook.com/leanhtan911205" class="text-dark" target="_blank">
+              <icon :icon="['fab', 'facebook-square']" size="lg"/>
             </a>
           </div>
           <p>

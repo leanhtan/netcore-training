@@ -74,6 +74,7 @@ namespace SimpleBlogEngine.Web
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IPostService, PostService>();
+            services.AddTransient<ICommentService, CommentService>();
 
             services.AddMvc();
             

@@ -11,15 +11,27 @@
                 label="Comment"
                 label-size="lg"
                 label-class="font-weight-bold pt-0">
-            <b-form-input required="" placeholder="Name"/>
+            <b-form-input required="" placeholder="Name" v-model="comment.name"/>
           </b-form-group>
           <b-form-group>
-            <b-form-textarea v-model="text" required="" :rows="5" placeholder="Leave a comment"/>
+            <b-form-textarea v-model="comment.content" required="" :rows="5" placeholder="Leave a comment"/>
           </b-form-group>
-          <b-button variant="primary">Post</b-button>
+          <b-button variant="primary" @click="postComment()">Post</b-button>
         </b-card>
       </b-col>
     </b-row>
+    <hr v-if="comments.length > 0"/>
+    <div v-for="(comment) in comments" :key="comment.id" class="mb-2">
+      <b-card bg-variant="light">
+        <div class="float-right">
+          <i>{{comment.addedDate}}</i>
+        </div>
+        <h5 variant="primary">
+          <icon :icon="['fas', 'user']"/> {{comment.name}}
+        </h5>
+        <p class="card-text">{{comment.content}}</p>
+      </b-card>
+    </div>
   </div>
 </template>
 <script src="./post.vue.js" />

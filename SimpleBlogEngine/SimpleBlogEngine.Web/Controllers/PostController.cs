@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using SimpleBlogEngine.Repository.Models;
 using SimpleBlogEngine.Services.Interfaces;
 using SimpleBlogEngine.Web.Models.PostViewModels;
 using System.Collections.Generic;
