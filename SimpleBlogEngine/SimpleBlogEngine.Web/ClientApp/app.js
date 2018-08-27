@@ -12,7 +12,7 @@ Vue.component('icon', FontAwesomeIcon)
 
 Vue.prototype.$http = axios
 
-Vue.use(BootstrapVue);
+Vue.use(BootstrapVue)
 
 sync(store, router)
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -74,7 +74,7 @@ namespace SimpleBlogEngine.Web.Pages.Post
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
             return RedirectToPage("Index");
         }

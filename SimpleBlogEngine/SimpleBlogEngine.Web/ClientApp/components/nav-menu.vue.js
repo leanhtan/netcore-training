@@ -10,14 +10,14 @@ export default {
     }
   },
   mounted() {
-    let vm = this;
+    let vm = this
     axios
       .get('/Category/GetAll')
       .then(response => (
         response.data.forEach(function (item) {
           vm.routes.push({ path: '/'.concat(item.name), display: item.name, id: item.id });
         })
-      ));
+      ))
   },
   methods: {
     toggleCollapsed: function (event) {
@@ -33,19 +33,18 @@ export default {
     searchPost: function () {
       this.setSearchContent({
         searchContent: this.searchContent
-      });
+      })
       this.setCategory({
         categoryId: undefined,
         categoryName: "Search with key: '".concat(this.searchContent).concat("'")
-      });
-      this.$router.replace("/Search");
+      })
+      this.$router.replace('/Search')
     },
     clearSearchContent: function () {
-      this.searchContent = '';
+      this.searchContent = ''
       this.setSearchContent({
         searchContent: this.searchContent
-      });
+      })
     }
   }
 }
-

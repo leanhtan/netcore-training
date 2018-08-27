@@ -89,7 +89,7 @@ namespace SimpleBlogEngine.Web.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
             return RedirectToAction("Index");
         }
