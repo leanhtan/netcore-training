@@ -27,7 +27,6 @@ namespace SimpleBlogEngine.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<ApplicationContext>(options => options.UseInMemoryDatabase("SimpleBlog"));
             services.AddDbContext<ApplicationContext>(options =>            options.UseSqlite(Configuration.GetConnectionString("DefaultConnection"), x => x.MigrationsAssembly("SimpleBlogEngine.Repository")));
 
             services.AddScoped<DbContext, ApplicationContext>();
