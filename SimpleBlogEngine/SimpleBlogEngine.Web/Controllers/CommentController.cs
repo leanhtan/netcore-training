@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SimpleBlogEngine.Repository.Models;
 using SimpleBlogEngine.Services.Interfaces;
@@ -39,6 +40,7 @@ namespace SimpleBlogEngine.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddComment([FromBody] CommentViewModel commentViewModel)
         {
             await commentService.Insert(new Comment {
@@ -52,6 +54,7 @@ namespace SimpleBlogEngine.Web.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteComment(long id)
         {
             await commentService.Delete(id);
