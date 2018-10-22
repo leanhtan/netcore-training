@@ -12,14 +12,6 @@ using Microsoft.EntityFrameworkCore;
 using SimpleBlogEngine.Repository.Models;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.SpaServices.Webpack;
-using Microsoft.AspNetCore.Authentication;
-using System.Security.Claims;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.OAuth;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Newtonsoft.Json.Linq;
 
 namespace SimpleBlogEngine.Web
 {
@@ -76,23 +68,6 @@ namespace SimpleBlogEngine.Web
                 {
                     microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
                     microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
-                    microsoftOptions.ClaimActions.MapJsonKey(ClaimTypes.Name, "name");
-                    microsoftOptions.SaveTokens = true;
-                    microsoftOptions.Events = new OAuthEvents
-                    {
-                        OnCreatingTicket = async context =>
-                        {
-                            var request = new HttpRequestMessage(HttpMethod.Get, context.Options.UserInformationEndpoint);
-                            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", context.AccessToken);
-                            var response = await context.Backchannel.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, context.HttpContext.RequestAborted);
-                            response.EnsureSuccessStatusCode();
-
-                            var user = JObject.Parse(await response.Content.ReadAsStringAsync());
-
-                            context.RunClaimActions(user);
-                        }
-                    };
                 });
 
             // Register the Swagger generator, defining 1 or more Swagger documents

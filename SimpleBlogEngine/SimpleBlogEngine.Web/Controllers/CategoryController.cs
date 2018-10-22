@@ -87,7 +87,7 @@ namespace SimpleBlogEngine.Web.Controllers
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

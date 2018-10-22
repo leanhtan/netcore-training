@@ -72,7 +72,7 @@ namespace SimpleBlogEngine.Web.Pages.Post
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
