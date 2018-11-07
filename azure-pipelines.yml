@@ -10,6 +10,6 @@ variables:
 steps:
 - script: |
     dotnet build SimpleBlogEngine/SimpleBlogEngine.sln --configuration $(buildConfiguration)
-    dotnet publish --configuration $(buildConfiguration) --output $BUILD_ARTIFACTSTAGINGDIRECTORY
+    dotnet publish SimpleBlogEngine/SimpleBlogEngine.Web/SimpleBlogEngine.Web.csproj --configuration $(buildConfiguration) --output $BUILD_ARTIFACTSTAGINGDIRECTORY
 
 - task: PublishBuildArtifacts@1
