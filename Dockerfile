@@ -9,6 +9,6 @@ FROM microsoft/aspnetcore:2.0
 WORKDIR /app
 
 # Copy files from the artifact staging folder on agent
-COPY SimpleBlogEngine/out .
+COPY SimpleBlogEngine.Web/out .
 
 ENTRYPOINT ["dotnet", "SimpleBlogEngine.Web.dll"]
