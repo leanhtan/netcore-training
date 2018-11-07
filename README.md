@@ -2,6 +2,10 @@
 
 Simple Blog Engine is a website created base on .NET Core
 
+| CI/CD | Build status |
+|---------|--------------|
+| Build (YAML) | [![Build Status](https://dev.azure.com/SD2183DevOps/SimpleBlogEngine/_apis/build/status/leanhtan.netcore-training)](https://dev.azure.com/SD2183DevOps/SimpleBlogEngine/_build/latest?definitionId=3) |
+
 ## Technology
 
 ### Font-end
