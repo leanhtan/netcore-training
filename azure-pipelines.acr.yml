@@ -13,6 +13,7 @@ steps:
     npm install --save-dev webpack
     npm install --save-dev webpack-dev-server
     npm install --save-dev webpack-dev-middleware webpack-hot-middleware
+    npm install --save-dev extract-text-webpack-plugin
     webpack --config SimpleBlogEngine/SimpleBlogEngine.Web/webpack.config.vendor.js
     dotnet build SimpleBlogEngine/SimpleBlogEngine.sln --configuration $(buildConfiguration)
     dotnet publish SimpleBlogEngine/SimpleBlogEngine.Web/SimpleBlogEngine.Web.csproj --configuration $(buildConfiguration) --output out
