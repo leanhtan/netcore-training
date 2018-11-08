@@ -10,6 +10,9 @@ variables:
 
 steps:
 - script: |
+    npm install -g npm@latest
+    npm i webpack-cli
+    npm i webpack-command
     webpack --config SimpleBlogEngine/SimpleBlogEngine.Web/webpack.config.vendor.js
     dotnet build SimpleBlogEngine/SimpleBlogEngine.sln --configuration $(buildConfiguration)
     dotnet publish SimpleBlogEngine/SimpleBlogEngine.Web/SimpleBlogEngine.Web.csproj --configuration $(buildConfiguration) --output out
