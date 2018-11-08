@@ -17,6 +17,7 @@ steps:
     npm install --save-dev optimize-css-assets-webpack-plugin
   displayName: Install webpack
 - script: |
+    npm install
     webpack --config SimpleBlogEngine/SimpleBlogEngine.Web/webpack.config.vendor.js
   displayName: Run webpack for SimpleBlogEngine.Web project
 - script: |
