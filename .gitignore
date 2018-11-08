@@ -1,17 +1,11 @@
 SimpleBlogEngine/SimpleBlogEngine.Web/bin
 SimpleBlogEngine/SimpleBlogEngine.Web/obj
 
-SimpleBlogEngine/SimpleBlogEngine.Model/bin
-SimpleBlogEngine/SimpleBlogEngine.Model/obj
-
 SimpleBlogEngine/SimpleBlogEngine.Repository/bin
 SimpleBlogEngine/SimpleBlogEngine.Repository/obj
 
 SimpleBlogEngine/SimpleBlogEngine.Service/bin
 SimpleBlogEngine/SimpleBlogEngine.Service/obj
-
-SimpleBlogEngine/SimpleBlogEngine.API/bin
-SimpleBlogEngine/SimpleBlogEngine.API/obj
 
 SimpleBlogEngine/.vs
 SimpleBlogEngine/.vscode

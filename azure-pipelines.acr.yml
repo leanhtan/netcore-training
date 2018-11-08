@@ -10,6 +10,7 @@ variables:
 
 steps:
 - script: |
+    webpack --config SimpleBlogEngine/SimpleBlogEngine.Web/webpack.config.vendor.js
     dotnet build SimpleBlogEngine/SimpleBlogEngine.sln --configuration $(buildConfiguration)
     dotnet publish SimpleBlogEngine/SimpleBlogEngine.Web/SimpleBlogEngine.Web.csproj --configuration $(buildConfiguration) --output out
     docker build -f Dockerfile -t $(dockerId).azurecr.io/$(imageName) .
