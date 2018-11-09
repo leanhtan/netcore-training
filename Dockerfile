@@ -11,7 +11,4 @@ WORKDIR /app
 # Copy files from the artifact staging folder on agent
 COPY SimpleBlogEngine .
 
-#Move to SimpleBlogEngine.Web
-Run cd SimpleBlogEngine.Web
-
-ENTRYPOINT ["dotnet", "run"]
+ENTRYPOINT ["dotnet", "run --project SimpleBlogEngine/SimpleBlogEngine.Web/SimpleBlogEngine.Web.csproj"]
