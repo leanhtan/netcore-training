@@ -3,12 +3,12 @@
 # See http://docs.microsoft.com/azure/devops/pipelines/languages/docker for more information
 
 # Create a container with the compiled asp.net core app
-FROM microsoft/dotnet:2.1-sdk
+FROM microsoft/dotnet:2.1-aspnetcore-runtime
 
 # Create app directory
 WORKDIR /app
 
 # Copy files from the artifact staging folder on agent
-COPY SimpleBlogEngine .
+COPY SimpleBlogEngine/SimpleBlogEngine.Web/out .
 
-CMD [ "cmd", "c:\\windows\\system32\\cmd.exe" ]
+ENTRYPOINT ["dotnet", "SimpleBlogEngine.Web.dll"]

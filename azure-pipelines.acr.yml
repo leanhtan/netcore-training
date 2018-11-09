@@ -21,8 +21,8 @@ steps:
     npm install
   displayName: Run webpack for SimpleBlogEngine.Web project
 - script: |
-# dotnet build SimpleBlogEngine/SimpleBlogEngine.sln --configuration $(buildConfiguration)
-# dotnet publish SimpleBlogEngine/SimpleBlogEngine.Web/SimpleBlogEngine.Web.csproj --configuration $(buildConfiguration) --output out
+    dotnet build SimpleBlogEngine/SimpleBlogEngine.sln --configuration $(buildConfiguration)
+    dotnet publish SimpleBlogEngine/SimpleBlogEngine.Web/SimpleBlogEngine.Web.csproj --configuration $(buildConfiguration) --output out
   displayName: Publish project
 - script: |
     docker build -f Dockerfile -t $(dockerId).azurecr.io/$(imageName) .
