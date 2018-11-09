@@ -28,7 +28,7 @@
     "vuex-router-sync": "^4.3.2",
 	"css-loader": "^0.26.4",
 	"event-source-polyfill": "0.0.7",
-	"jquery": "3.0.0",
+	"jquery": "3.0.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.0",
