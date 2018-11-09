@@ -18,8 +18,7 @@ steps:
   displayName: Install webpack
 - script: |
     cd SimpleBlogEngine/SimpleBlogEngine.Web
-    npm update
-    webpack --config webpack.config.vendor.js
+    npm install
   displayName: Run webpack for SimpleBlogEngine.Web project
 - script: |
     dotnet build SimpleBlogEngine/SimpleBlogEngine.sln --configuration $(buildConfiguration)
