@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8875ad471a5030c37516"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4afe6592aaa319e06637"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -40093,7 +40093,7 @@ var render = function() {
               _c(
                 "b-button",
                 {
-                  staticClass: "my-2 my-sm-0",
+                  staticClass: "my-2 my-sm-0 mr-sm-2",
                   attrs: { size: "sm" },
                   on: {
                     click: function($event) {
@@ -40102,6 +40102,60 @@ var render = function() {
                   }
                 },
                 [_vm._v("Search")]
+              ),
+              _vm._v(" "),
+              _c(
+                "b-button",
+                {
+                  directives: [
+                    {
+                      name: "b-modal",
+                      rawName: "v-b-modal.loginModel",
+                      modifiers: { loginModel: true }
+                    }
+                  ],
+                  attrs: { size: "sm" }
+                },
+                [_vm._v("\n        Login\n      ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "b-modal",
+                { attrs: { id: "loginModel", title: "Login", size: "sm" } },
+                [
+                  _c(
+                    "b-container",
+                    { attrs: { fluid: "" } },
+                    [
+                      _c(
+                        "b-row",
+                        { staticClass: "mb-1" },
+                        [
+                          _c(
+                            "b-button",
+                            {
+                              staticClass: "mx-auto",
+                              attrs: { variant: "warning" }
+                            },
+                            [
+                              _vm._v(
+                                "\n              Login with Microsoft\n            "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("div", {
+                    attrs: { slot: "modal-footer" },
+                    slot: "modal-footer"
+                  })
+                ],
+                1
               )
             ],
             1
