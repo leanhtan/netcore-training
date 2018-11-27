@@ -1,0 +1,5 @@
+docker build -f Dockerfile -t sd2183.azurecr.io/dotnetcore:1.0
+
+docker run -it --rm --name myapp sd2183.azurecr.io/dotnetcore:1.0
+
+docker exec myapp ipconfig
