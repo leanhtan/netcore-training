@@ -7,7 +7,7 @@ job_build_dotnet:
        artifacts:
          expire_in: 12 hrs
          paths:
-          - SimpleBlogEngine/SimpleBlogEngine.Web/bin/Release/netcoreapp2.0/publish/
+          - SimpleBlogEngine/SimpleBlogEngine.Web/bin/Release/netcoreapp2.1/publish/
        
 
 deploy_development:
