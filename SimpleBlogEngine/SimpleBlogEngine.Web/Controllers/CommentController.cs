@@ -40,7 +40,6 @@ namespace SimpleBlogEngine.Web.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> AddComment([FromBody] CommentViewModel commentViewModel)
         {
             await commentService.Insert(new Comment {
